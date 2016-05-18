@@ -274,8 +274,8 @@ OUTPUT_TEXT_DIR = '{0}/hdf5/buffer_{1}_ytprepool_{2}'.format(SETTING, BUFFER_SIZ
 VOCAB = '%s/vocabulary.txt' % OUTPUT_TEXT_DIR
 OUTPUT_BASIS_DIR_PATTERN = '%s/%%s_batches' % OUTPUT_BASIS_DIR
 OUTPUT_TEXT_DIR_PATTERN = '%s/%%s_batches' % OUTPUT_TEXT_DIR
-POOLFEAT_FILE_PATTERN = './splits/yt_pooled_fc7_mean_{0}.txt'
-SENTS_FILE_PATTERN = './splits/sents_{0}.txt'
+POOLFEAT_FILE_PATTERN = './splits/yt_pooled_vgg_fc7_mean_{0}.txt'
+SENTS_FILE_PATTERN = './splits/sents_{0}_lc_nopunc.txt'
 OUT_FILE_PATTERN = \
 '{0}/yt_prepool_{0}_sequence_recurrent.txt'
 OUT_CORPUS_PATH = './rawcorpus/{0}'
@@ -302,7 +302,7 @@ def preprocess_dataset(split_name, data_split_name, batch_stream_length, aligned
   writer.write_to_exhaustion()
   writer.write_filelists()
   if not os.path.isfile(vocab_filename):
-    fsg.dump_vocabulary(vocab_out_path)
+    tsg.dump_vocabulary(vocab_filename)
   out_path = OUT_CORPUS_PATH.format(data_split_name)
   vid_id_order_outpath = '%s/yt_pool_%s_vidid_order_%d_%d.txt' % \
   (out_path, data_split_name, BUFFER_SIZE, MAX_WORDS)
