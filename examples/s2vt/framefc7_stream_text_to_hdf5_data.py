@@ -273,7 +273,7 @@ def preprocess_dataset(split_name, data_split_name, batch_stream_length,
   writer.write_filelists()
   if not os.path.isfile(vocab_filename):
     print "Vocabulary not found"
-    # fsg.dump_vocabulary(vocab_out_path)
+     fsg.dump_vocabulary(vocab_filename)
   out_path = OUT_CORPUS_PATH.format(data_split_name)
   vid_id_order_outpath = '%s/yt_s2vtvgg_%s_vidid_order_%d_%d.txt' % \
   (out_path, data_split_name, BUFFER_SIZE, MAX_WORDS)
